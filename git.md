@@ -26,3 +26,9 @@ Store git credentials again:
 git config --global credential.helper store
 git pull
 ```
+
+## Set remote with few repos (f.e.: with GitLab when there is already a GitHub)
+```
+git remote set-url --add --push URL
+```
+
