@@ -32,3 +32,7 @@ git pull
 git remote set-url --add --push URL
 ```
 
+## Set remote url for private repo with token
+```
+git remote set-url origin https://dpqkdqkj:<TOKEN>@github.com/dpqkdqkj/<REPONAME>.git
+```
