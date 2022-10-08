@@ -9,3 +9,9 @@ source: [SO](https://stackoverflow.com/questions/29215197/mute-specified-section
 ffmpeg -i input-video.avi -vn -acodec copy output-audio.aac
 ```
 source: [SO](https://stackoverflow.com/questions/9913032/how-can-i-extract-audio-from-video-with-ffmpeg)
+
+## Create video file from image and audio file
+```
+ffmpeg -loop 1 -i img.jpg -i music.mp3 -shortest -acodec copy -vcodec mjpeg result.mkv
+```
+source: [SO](ffmpeg -loop 1 -i img.jpg -i music.mp3 -shortest -acodec copy -vcodec mjpeg result.mkv)
