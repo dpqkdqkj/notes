@@ -21,3 +21,9 @@ source: [SO](ffmpeg -loop 1 -i img.jpg -i music.mp3 -shortest -acodec copy -vcod
 ffmpeg -f lavfi -i color=c=black:s=1280x720:r=5 -i audio.mp3 -crf 0 -c:a copy -shortest output.mp4
 ```
 [SO](https://video.stackexchange.com/questions/29527/ffmpeg-create-a-black-background-video-from-audio-for-youtube-upload)
+
+## Drop corrupt packets
+```
+ffmpeg -fflags +discardcorrupt -i myvideo.mp4 -c copy output.ts
+```
+[SO](https://stackoverflow.com/questions/61091012/corrupt-input-packet-in-stream-1-error-in-ffmpeg)
