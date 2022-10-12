@@ -33,3 +33,4 @@ ffmpeg -fflags +discardcorrupt -i myvideo.mp4 -c copy output.ts
 ffmpeg -fflags +discardcorrupt -re -i input.ts -codec copy -f flv rtmp://a.rtmp.youtube.com/live2/<KEY>
 ```
 (https://mega.nz/file/d0NklSpI#UmOVONaqio3fozjkXcoCaBByI10pjS_7eZCX2PnN3ws)
+https://mega.nz/fm/4x9Xmb7Z
