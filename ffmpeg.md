@@ -6,7 +6,7 @@ source: [SO](https://stackoverflow.com/questions/29215197/mute-specified-section
 
 ## Extract audio from video file
 ```
-ffmpeg -i input-video.avi -vn -acodec copy output-audio.aac
+ffmpeg -fflags +discardcorrupt -i input-video.avi -vn -acodec copy output-audio.aac
 ```
 source: [SO](https://stackoverflow.com/questions/9913032/how-can-i-extract-audio-from-video-with-ffmpeg)
 
