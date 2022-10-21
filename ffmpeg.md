@@ -37,6 +37,6 @@ https://mega.nz/fm/4x9Xmb7Z
 
 ## Concat videos
 ```
-ffmpeg -fflags +discardcorrupt -f concat -i -safe 0 list_of_videos.txt -c copy output.ts
+ffmpeg -fflags +discardcorrupt -f concat -safe 0 -i list_of_videos.txt -c copy output.ts
 ```
 
