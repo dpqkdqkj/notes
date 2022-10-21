@@ -40,3 +40,7 @@ https://mega.nz/fm/4x9Xmb7Z
 ffmpeg -fflags +discardcorrupt -fflags +igndts -f concat -safe 0 -i list_of_videos.txt -c copy output.ts
 ```
 
+## Cut video
+```
+ffmpeg -ss 00:01:00 -to 00:02:00 -i input.ts -c copy output.ts
+```
