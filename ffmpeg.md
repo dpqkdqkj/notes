@@ -42,5 +42,5 @@ ffmpeg -fflags +discardcorrupt -fflags +igndts -f concat -safe 0 -i list_of_vide
 
 ## Cut video
 ```
-ffmpeg -ss 00:01:00 -to 00:02:00 -i input.ts -c copy output.ts
+ffmpeg -fflags +discardcorrupt -ss 00:01:00 -to 00:02:00 -i input.ts -c copy output.ts
 ```
