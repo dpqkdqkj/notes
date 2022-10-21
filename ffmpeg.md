@@ -34,3 +34,9 @@ ffmpeg -fflags +discardcorrupt -re -i input.ts -codec copy -f flv rtmp://a.rtmp.
 ```
 (https://mega.nz/file/d0NklSpI#UmOVONaqio3fozjkXcoCaBByI10pjS_7eZCX2PnN3ws)
 https://mega.nz/fm/4x9Xmb7Z
+
+## Concat videos
+```
+ffmpeg -f concat -i list_of_videos.txt -c copy output.ts
+```
+
