@@ -1,6 +1,6 @@
 ## Mute specified sections of an audio file
 ```
-ffmpeg -i inputFile.ts -af "volume=enable='between(t,5,10)':volume=0, volume=enable='between(t,15,20)':volume=0" -c:v copy outputFile.ts
+ffmpeg -i input.ts -af "volume=enable='between(t,5,10)':volume=0, volume=enable='between(t,15,20)':volume=0" -c:a aac -c:v copy output-muted.ts
 ```
 source: [SO](https://stackoverflow.com/questions/29215197/mute-specified-sections-of-an-audio-file-using-ffmpeg)
 
