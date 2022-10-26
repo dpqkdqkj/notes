@@ -37,7 +37,11 @@ https://mega.nz/fm/4x9Xmb7Z
 
 ## Concat videos
 ```
-ffmpeg -fflags +discardcorrupt -fflags +igndts -f concat -safe 0 -i list_of_videos.txt -c copy output.ts
+ffmpeg -fflags +discardcorrupt -fflags +igndts -f concat -safe 0 -i concat.txt -c copy output.ts
+```
+where concat.txt
+```
+for f in *.ts; do echo "file '$f'" >> concat.txt; done
 ```
 
 ## Cut video
