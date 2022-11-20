@@ -1,28 +1,34 @@
 # Prepare Filesystems
 ## Partition
-/dev/sda (with cfdisk)
-512 mb for /boot/efi
-and other for /
+```
+cfdisk /dev/sdb
+```
+```
+/dev/sdb1                 2048  1050623  1048576   512M             c W95 FAT32 (LBA)
+/dev/sdb2              1050624 62333951 61283328  29,2G            83 Linux
+```
+
 ## Format these partitions as FAT32 and ext4, respectively:
 ```
-# mkfs.vfat /dev/sda1
-# mkfs.ext4 /dev/sda2
+# mkfs.vfat /dev/sdb1
+# mkfs.ext4 /dev/sdb2
 ```
 ## To disable journaling you can use (where XN points to your partition letter and digit):
 ```
-tune2fs -O ^has_journal /dev/sdXN
+tune2fs -O ^has_journal /dev/sdb2
 ```
 If you're using an SD card, you can create the ext4 file system with the ^has_journal option - this disables journaling, which might increase the drive's life, at the cost of a higher chance of data loss.
 
 ## Create a New Root and Mount Filesystems
 ```
-# mount /dev/sda2 /mnt/
-# mkdir -p /mnt/boot/efi/
-# mount /dev/sda1 /mnt/boot/efi/
+# mount /dev/sdb2 /mnt/
+# mkdir /mnt/boot
+# mount /dev/sdb1 /mnt/boot
 ```
 
 # Install
 ```
+# xbps-install -S xz
 # tar xvf void-<...>-ROOTFS.tar.xz -C /mnt
 ```
 
@@ -35,7 +41,7 @@ If you're using an SD card, you can create the ext4 file system with the ^has_jo
 # cp /etc/resolv.conf /mnt/etc/
 
 # PS1='(chroot) # ' chroot/mnt/ /bin/bash
-# PS1='(chroot) # ' proot -q qemu-aarch64-static -r /mnt -w /
+# PS1='(chroot) # '
 
 # xbps-install -Su xbps
 # xbps-install -u
