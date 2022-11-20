@@ -35,7 +35,7 @@ If you're using an SD card, you can create the ext4 file system with the ^has_jo
 # cp /etc/resolv.conf /mnt/etc/
 
 # PS1='(chroot) # ' chroot/mnt/ /bin/bash
-# proot -q qemu-<platform>-static -r /mnt -w /
+# PS1='(chroot) # ' proot -q qemu-aarch64-static -r /mnt -w /
 
 # xbps-install -Su xbps
 # xbps-install -u
@@ -43,6 +43,22 @@ If you're using an SD card, you can create the ext4 file system with the ^has_jo
 # xbps-remove base-voidstrap
 
 (chroot) # passwd
+```
+
+
+# Disable leds
+add to /boot/config.txt:
+```
+# Disable the PWR and Activity LED
+dtparam=pwr_led_trigger=none
+dtparam=pwr_led_activelow=off
+dtparam=act_led_trigger=none
+dtparam=act_led_activelow=off
+
+[pi4]
+# Disable Ethernet LEDs
+dtparam=eth_led0=4
+dtparam=eth_led1=4
 ```
 
 
