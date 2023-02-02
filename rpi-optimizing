@@ -1,0 +1,84 @@
+https://blues.io/blog/tips-tricks-optimizing-raspberry-pi-power/
+
+Disable Onboard LEDs
+
+⚡️ Power Saved? Approximately 10mA. ⚡️
+
+We can disable the onboard LEDs on the Pi by again editing the /boot/config.txt file, adding the following, and rebooting:
+
+[pi4]
+# Disable the PWR LED
+dtparam=pwr_led_trigger=none
+dtparam=pwr_led_activelow=off
+# Disable the Activity LED
+dtparam=act_led_trigger=none
+dtparam=act_led_activelow=off
+# Disable ethernet port LEDs
+dtparam=eth_led0=4
+dtparam=eth_led1=4
+
+Please note that these configurations are specific to the Raspberry Pi 4 Model B!
+
+Clock Down the CPU
+
+⚡️ Power Saved? Varies! ⚡️
+
+If you don’t require the full power of the Raspberry Pi CPU (which is overkill for many remote monitoring situations anyway), you might save a few mA by “underclocking” the CPU.
+
+For example, to set the CPU clock speed to a maximum of 900MHz, you could update /boot/config.txt and change the following parameters:
+
+[all]
+arm_freq=900
+arm_freq_max=900
+
+You can also play around with the core_freq_min, over_voltage, over_voltage_min, and many other parameters that are well documented in the Raspberry Pi overclocking options.
+
+Please note that you may not see power savings in certain scenarios. For example, if you have a process that runs longer at a slower clock speed, versus shorter at a faster clock speed, you’re not going to see a net change in power consumption.
+
+Disable Wi-Fi and Bluetooth
+
+⚡️ Power Saved? Approximately 40mA. ⚡️
+
+If your solution isn’t using Wi-Fi or Bluetooth, you can likely disable them.
+
+    If you disable HDMI, USB, and Wi-Fi at the same time you’ll have trouble interfacing with your Pi!
+
+To disable Wi-Fi and Bluetooth, open /boot/config.txt, add these parameters, and reboot:
+
+[all]
+dtoverlay=disable-wifi
+dtoverlay=disable-bt
+
+To re-enable Wi-Fi and Bluetooth (or just one of them), simply remove the parameter(s) from the file and reboot.
+
+Disable the USB Controller
+
+⚡️ Power Saved? Approximately 100mA. ⚡️
+
+If you’re running your Raspberry Pi in a headless configuration, it’s likely you can get away with not powering the onboard USB controller. Note that even if you aren’t using a mouse or keyboard, they are still powered!
+
+To disable the USB controller on your Raspberry Pi, execute the following command:
+
+echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/unbind
+
+And then to re-enable the USB controller when it’s needed again:
+
+echo '1-1' |sudo tee /sys/bus/usb/drivers/usb/bind
+
+After a reboot the USB controller will be enabled automatically.
+Disable HDMI Output
+
+⚡️ Power Saved? Approximately 30mA. ⚡️
+
+Again on a headless Pi you, by definition, don’t need to hook up a monitor. If that’s the case, you can also disable the HDMI output.
+
+To disable the HDMI output on your Raspberry Pi, execute the following command:
+
+sudo /opt/vc/bin/tvservice -o
+
+And then to re-enable the HDMI output when you need it back again, use this command:
+
+sudo /opt/vc/bin/tvservice -p
+
+As with disabling the USB controller, HDMI output is enabled after a reboot.
+
