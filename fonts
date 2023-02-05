@@ -1,0 +1,15 @@
+10-hinting-slight.conf     45-generic.conf    65-fonts-persian.conf
+10-sub-pixel-rgb.conf      45-latin.conf      65-nonlatin.conf
+10-yes-antialias.conf      48-spacing.conf    69-unifont.conf
+11-lcdfilter-default.conf  49-sansserif.conf  70-no-bitmaps.conf
+20-no-embedded.conf        50-user.conf       80-delicious.conf
+20-unhint-small-vera.conf  51-local.conf      90-synthetic.conf
+30-metric-aliases.conf     60-generic.conf    README
+40-nonlatin.conf           60-latin.conf
+
+10 sans regular
+10 monospace regular
+aliasing
+rgb
+light hinting
+dpi 96
