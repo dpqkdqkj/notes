@@ -46,5 +46,5 @@ for f in *.ts; do echo "file '$f'" >> concat.txt; done
 
 ## Cut video
 ```
-ffmpeg -fflags +discardcorrupt -ss 00:01:00 -to 00:02:00 -i input.ts -c copy output.ts
+ffmpeg -fflags +discardcorrupt -ss 00:01:00 -to 00:02:00 -i input.ts -c copy -map 0 output.ts
 ```
