@@ -29,3 +29,4 @@ right left balance
 ```
 amixer set "PCM" 0dB,-3.2dB
 ```
+place it into /etc/rc.local for apply it with startup linux
