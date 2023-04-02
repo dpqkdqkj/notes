@@ -16,3 +16,16 @@ pactl set-sink-mute @DEFAULT_SINK@ toggle
 ```
 
 [source](https://unix.stackexchange.com/questions/342554/how-to-enable-my-keyboards-volume-keys-in-xfce#answer-412926)
+
+```
+amixer set 'Master' 10%-
+```
+
+```
+amixer set 'Master' 5%+
+```
+
+right left balance
+```
+amixer set "PCM" 0dB,-3.2dB
+```
