@@ -36,3 +36,9 @@ git remote set-url --add --push URL
 ```
 git remote set-url origin https://dpqkdqkj:<TOKEN>@github.com/dpqkdqkj/<REPONAME>.git
 ```
+
+## Clone repo with submodules
+```
+git clone --recurse-submodules --remote-submodules <repo-URL>
+```
+
