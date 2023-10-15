@@ -48,3 +48,14 @@ for f in *.ts; do echo "file '$f'" >> concat.txt; done
 ```
 ffmpeg -fflags +discardcorrupt -ss 00:01:00 -to 00:02:00 -i input.ts -c copy -map 0 output.ts
 ```
+
+## Blur
+https://stackoverflow.com/questions/61360307/how-to-apply-multiple-cropped-blurs
+```
+ffmpeg -i test.mp4 -filter_complex \
+"[0:v]crop=w=100:h=100:x=20:y=40,boxblur=10:enable='between(t,5,8)'[c1];
+[0:v]crop=w=100:h=100:x=40:y=60,boxblur=10:enable='between(t,10,13)'[c2];
+[0:v][c1]overlay=x=20:y=40:enable='between(t,5,8)'[v0];
+[v0][c2]overlay=x=40:y=60:enable='between(t,10,13)'[v]" \
+-map "[v]" -movflags +faststart output.mp4
+```
